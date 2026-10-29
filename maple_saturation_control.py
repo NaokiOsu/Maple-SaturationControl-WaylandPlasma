@@ -521,6 +521,8 @@ class MainWindow(QMainWindow):
         self.gamma_spin.setFixedWidth(80)
         self.gamma_spin.setButtonSymbols(QDoubleSpinBox.ButtonSymbols.NoButtons)
         self.gamma_spin.valueChanged.connect(self.sync_gamma_slider)
+        self.gamma_spin.valueChanged.connect(lambda v: self.gamma_group.setTitle(f"CONTRAST VIBRANCE (Gamma Curve) - {1/v:.2f}"))
+        self.gamma_group.setTitle(f"CONTRAST VIBRANCE (Gamma Curve) - {1/self.gamma_spin.value():.2f}")
         self.gamma_spin.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         gamma_buttons_layout = QHBoxLayout()
